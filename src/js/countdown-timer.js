@@ -4,9 +4,14 @@ const refs = {
   valueMins: document.querySelector('.value[data-value="mins"]'),
   valueSecs: document.querySelector('.value[data-value="secs"]'),
   btnTimer: document.querySelector('button[data-action-change]'),
+  alertMessage: document.querySelector('.js-alert'),
 };
 
+// console.log(refs.alertMessage.textContent);
+// refs.alertMessage.textContent = 'asdsad';
 refs.btnTimer.addEventListener('click', onBtnClickHandler);
+// refs.alertMessage.style.color = 'red';
+refs.alertMessage.style.fontSize = '30px';
 
 let isActive = false;
 
@@ -17,9 +22,11 @@ let intervalId = setInterval(() => {
   if (currentTime >= targetDate) {
     clearInterval(intervalId);
     updateClockface(0);
-    alert(
-      'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
-    );
+    refs.alertMessage.textContent = `По истечении таймера можно вставить модалку или любой popup с рекламой и прочим.`;
+
+    // alert(
+    //   'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
+    // );
     return;
   }
 
@@ -55,9 +62,11 @@ function onBtnClickHandler() {
       if (currentTime >= targetDate) {
         clearInterval(intervalId);
         updateClockface(0);
-        alert(
-          'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
-        );
+        refs.alertMessage.textContent =
+          'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим';
+        // alert(
+        //   'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
+        // );
         return;
       }
       updateClockface(deltaTime);
@@ -71,15 +80,15 @@ function onBtnClickHandler() {
     isActive = true;
     intervalId = null;
     intervalId = setInterval(() => {
-      const targetDate = new Date('Jan 30, 2021 21:08:50');
+      const targetDate = new Date('Jan 30, 2022 21:08:50');
       const currentTime = Date.now();
       const deltaTime = targetDate - currentTime;
       if (currentTime >= targetDate) {
         clearInterval(intervalId);
         updateClockface(0);
-        alert(
-          'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
-        );
+        // alert(
+        //   'Вместо алерта можно вставить модалку или любой popup с рекламой и прочим',
+        // );
         return;
       }
 
