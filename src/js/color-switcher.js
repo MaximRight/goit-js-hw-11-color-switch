@@ -7,9 +7,6 @@ const colors = [
   '#795548',
 ];
 
-const randomIntegerFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
 
 const refs = {
   startBtn: document.querySelector('button[data-action-start]'),
@@ -18,16 +15,24 @@ const refs = {
   bodyRef: document.body,
 };
 
+const randomIntegerFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
 const colorSwitcher = {
   intervalId: null,
-  isActive: false,
+
+  // we may use either isActive or refs.startBtn.disabled = true;
+  // isActive: false,
   start() {
     refs.startBtn.disabled = true;
-    if (this.isActive) {
-      return;
-    }
 
-    this.isActive = true;
+    // we may use either isActive or refs.startBtn.disabled = true;
+    // if (this.isActive) {
+    //   return;
+    // }
+    // this.isActive = true;
+
     this.intervalId = setInterval(() => {
       let integer = randomIntegerFromInterval(0, Number(colors.length));
       refs.bodyRef.style.backgroundColor = colors[integer];
@@ -37,7 +42,9 @@ const colorSwitcher = {
     refs.startBtn.disabled = false;
     clearInterval(this.intervalId);
     this.intervalId = null;
-    this.isActive = false;
+
+    // we may use either isActive or refs.startBtn.disabled = true;
+    // this.isActive = false;
   },
 };
 
